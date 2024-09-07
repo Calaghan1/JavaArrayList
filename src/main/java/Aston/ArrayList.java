@@ -116,10 +116,10 @@ public class ArrayList<T> {
     }
     /**
      * Приватный метод увеличения длины массива для коллекции
-     * @param NewCap кол-во пустых ячеек которые добавляем к массиву
+     * @param newcap кол-во пустых ячеек которые добавляем к массиву
      */
-    private void scale(int NewCap) {
-        cap = NewCap + cap;
+    private void scale(int newcap) {
+        cap = newcap;
         T[] buff = (T[]) new Object[cap];
         if (size >= 0) System.arraycopy(arr, 0, buff, 0, size);
         arr = buff;

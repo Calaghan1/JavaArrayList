@@ -36,26 +36,29 @@ public class arraylist<T> {
         } else {
             arr = (T[]) new Object[cap];
         }
+        this.cap = cap;
     }
     /**
      * Метод добавляет элемент в коллекцию
      */
     public void add(T a) {
         if (cap - size < 10) {
-            scale(300);
+            scale(cap * 2);
         }
         arr[size] = a;
         size++;
     }
     /**
      * Метод добавляет элемент в коллекцию по индексу сдвигая остальные влево
+     * @param index индекс куда нужно вставить элемент
+     * @param a переменная для вставки
      */
     public void add(int index, T a) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Index out of bounds");
         } else {
             if (cap - size < 10) {
-                scale(300);
+                scale(cap * 2);
             }
             for (int i = size; i > index; i--) {
                 arr[i] = arr[i - 1];
@@ -66,6 +69,8 @@ public class arraylist<T> {
     }
     /**
      * Метод заменяет элемент коллекции
+     * @param index индекс элемента >= 0 и <= size который нужно заменить
+     * @param a переменная для замены
      */
     public void replace(int index, T a) {
         if (index < 0 || index > size) {
@@ -75,6 +80,7 @@ public class arraylist<T> {
     }
     /**
      * Метод возвращает элемент коллекции по индексу
+     * @param index индекс элемента >= 0 и <= size который нужно вернуть
      */
     public T get(int index) {
         if (index < 0 || index >= size) {
@@ -84,6 +90,7 @@ public class arraylist<T> {
     }
     /**
      * Метод удаляет элемент коллекции по индексу
+     * @param index индекс элемента >= 0 и <= size который нужно удалить
      */
     public void remove(int index) {
         if (index < 0 || index > size) {
@@ -104,15 +111,13 @@ public class arraylist<T> {
     }
     /**
      * Приватный метод увеличения длины массива для коллекции
+     * @param NewCap кол-во пустых ячеек которые добавляем к массиву
      */
-    private boolean scale(int NewCap) {
+    private void scale(int NewCap) {
         cap = NewCap + cap;
         T[] buff = (T[]) new Object[cap];
-        for (int i = 0; i < size; i++) {
-            buff[i] = arr[i];
-        }
+        if (size >= 0) System.arraycopy(arr, 0, buff, 0, size);
         arr = buff;
-        return true;
     }
     /**
      * Геттер для переменной size
@@ -120,9 +125,12 @@ public class arraylist<T> {
     public int size() {
         return size;
     }
-
+    public int cap() {
+        return cap;
+    }
     /**
      * Обертка для быстрой сортировки
+     * @param comparator компоратор для сравнения различных объектов
      */
     public void sort(Comparator<? super T> comparator) {
         quickSort(0, size - 1, comparator);

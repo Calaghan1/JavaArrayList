@@ -14,6 +14,22 @@ class arraylistTest {
             list.add(i);
         }
         assertEquals(list.size(), 1002);
+
+        arraylist<Integer> list2 = new arraylist<>(list);
+        assertEquals(list2.size(), list.size());
+        assertEquals(list2.get(0), list.get(0));
+        assertEquals(list2.get(1), list.get(1));
+
+        Integer[] arr = new Integer[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            arr[i] = list.get(i);
+        }
+        arraylist<Integer> list3 = new arraylist<>(arr);
+        assertEquals(list3.get(0), arr[0]);
+        assertEquals(list3.get(1), arr[1]);
+
+        arraylist<Integer> list4 = new arraylist<>(300);
+        assertEquals(300, list4.cap());
     }
 
     @org.junit.jupiter.api.Test

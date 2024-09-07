@@ -80,7 +80,7 @@ class ArrayListTest {
         list.add("2");
         list.add("3");
         assertEquals(3, list.size());
-        list.removeall();
+        list.removeAll();
         assertEquals(0, list.size());
         assertThrowsExactly(IllegalArgumentException.class, () -> {list.get(0);});
     }

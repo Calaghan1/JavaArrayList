@@ -109,10 +109,11 @@ public class ArrayList<T> {
     /**
      * Метод полностью очищает коллекцию
      */
-    public void removeall() {
+    public void removeAll() {
         arr = (T[]) new Object[DEFAULT_CAP];
-        size = 0;
         cap = DEFAULT_CAP;
+        size = 0;
+
     }
     /**
      * Приватный метод увеличения длины массива для коллекции

@@ -4,25 +4,30 @@ import java.util.Comparator;
 /**
  * Реализация собственной коллекции ArrayList
  */
-public class arraylist<T> {
+public class ArrayList<T> {
     /**
      * Базовый конструктор с использованием стандартной длины массива
      */
-    public arraylist() {
+    private final int DEFAULT_CAP = 100;
+    private T[] arr;
+    private int size;
+    private int cap;
+
+    public ArrayList() {
         arr = (T[]) new Object[DEFAULT_CAP];
         cap = DEFAULT_CAP;
     }
     /**
      * Конструктор из массива Т
      */
-    public arraylist(T[] a) {
+    public ArrayList(T[] a) {
         arr = a.clone();
         size = a.length - 1;
     }
     /**
-     * Конструктор из другого обхекта arraylist
+     * Конструктор из другого обхекта ArrayList
      */
-    public arraylist(arraylist<T> a) {
+    public ArrayList(ArrayList<T> a) {
         arr = a.arr.clone();
         size = a.size;
         cap = a.cap;
@@ -30,7 +35,7 @@ public class arraylist<T> {
     /**
      * Конструктор с заданной длиной
      */
-    public arraylist(int cap) {
+    public ArrayList(int cap) {
         if (cap <= 0) {
             throw new IllegalArgumentException("Capacity <= 0");
         } else {
@@ -104,7 +109,7 @@ public class arraylist<T> {
     /**
      * Метод полностью очищает коллекцию
      */
-    public void removeALL() {
+    public void removeall() {
         arr = (T[]) new Object[DEFAULT_CAP];
         size = 0;
         cap = DEFAULT_CAP;
@@ -168,8 +173,5 @@ public class arraylist<T> {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    private final int DEFAULT_CAP = 100;
-    private T[] arr;
-    private int size;
-    private int cap;
+
 }

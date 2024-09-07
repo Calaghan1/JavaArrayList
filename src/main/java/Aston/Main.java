@@ -4,7 +4,7 @@ package Aston;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        arraylist<Double> list = new arraylist<>();
+        ArrayList<Double> list = new ArrayList<>();
         for (Integer i = 0; i < 1000.0; i++) {
             list.add(1000.0 * Math.random());
         }

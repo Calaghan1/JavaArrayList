@@ -1,4 +1,4 @@
-package Aston;
+package aston;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -119,11 +119,11 @@ class ArrayListTest {
         assertEquals(2.0, list2.get(1));
         assertEquals(3.0, list2.get(2));
 
-        for (Integer i = 0; i < 1000.0; i++) {
+        for (int i = 0; i < 1000; i++) {
             list2.add(1000.0 * Math.random());
         }
         list2.sort(Double::compareTo);
-        for (Integer i = 1; i < 1000.0; i++) {
+        for (int i = 1; i < 1000; i++) {
             assertTrue((list2.get(i-1) < list2.get(i)));
         }
     }

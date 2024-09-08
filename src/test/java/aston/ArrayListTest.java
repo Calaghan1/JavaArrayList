@@ -124,7 +124,7 @@ class ArrayListTest {
         }
         list2.sort(Double::compareTo);
         for (int i = 1; i < 1000; i++) {
-            assertTrue((list2.get(i-1) < list2.get(i)));
+            assertTrue((list2.get(i-1) <= list2.get(i)));
         }
     }
 }
